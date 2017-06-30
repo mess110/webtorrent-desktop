@@ -15,7 +15,7 @@ Module.prototype.require = function (id) {
 console.time('init')
 
 const crashReporter = require('../crash-reporter')
-crashReporter.init()
+// crashReporter.init()
 
 // Perf optimization: Start asynchronously read on config file before all the
 // blocking require() calls below.
@@ -233,6 +233,7 @@ const dispatchHandlers = {
   'openTorrentFile': () => ipcRenderer.send('openTorrentFile'),
   'openFiles': () => ipcRenderer.send('openFiles'), /* shows the open file dialog */
   'openTorrentAddress': () => { state.modal = { id: 'open-torrent-address-modal' } },
+  'openSearch': () => { state.modal = { id: 'open-search-modal' } },
 
   'addTorrent': (torrentId) => controllers.torrentList().addTorrent(torrentId),
   'showCreateTorrent': (paths) => controllers.torrentList().showCreateTorrent(paths),

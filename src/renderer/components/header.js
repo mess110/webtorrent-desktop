@@ -26,7 +26,7 @@ class Header extends React.Component {
           </i>
         </div>
         <div className='nav right float-right'>
-          {this.getAddButton()}
+          {this.getSearchButton()}
         </div>
       </div>
     )
@@ -47,6 +47,19 @@ class Header extends React.Component {
         title='Add torrent'
         onClick={dispatcher('openFiles')}>
         add
+      </i>
+    )
+  }
+
+  getSearchButton () {
+    const state = this.props.state
+    if (state.location.url() !== 'home') return null
+    return (
+      <i
+        className='icon add'
+        title='Search for torrents'
+        onClick={dispatcher('openSearch')}>
+        search
       </i>
     )
   }
